@@ -4,7 +4,7 @@ __author__ = "Dirk Colbry"
 __authors__ = ["Dirk Colbry", "Robert Hülsmann"]
 
 __project_name__ = "lithophane"
-__version__ = "1.0.12"
+__version__ = "1.0.13"
 __license__ = "MIT"
 __maintainer__ = "Robert Hülsmann"
 __email__ = "robby@huelsi.de"
