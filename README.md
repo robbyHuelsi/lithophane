@@ -3,7 +3,7 @@ This module generates a 3D model of a lithophane from an given image. The output
 
 "A lithophane is a thin plaque of translucent material, [...] which has been moulded to varying thickness, such that when lit from behind the different thicknesses show as different shades, forming an image." - [Wikipedia](https://en.wikipedia.org/wiki/Lithophane)
 
-The code is originally written by Dirk Colbry ([original repository](https://github.com/colbrydi/Lithophane)) and edited by Robert Hülsmann.
+The code is originally written by Dirk Colbry ([original repository](https://github.com/colbrydi/Lithophane)) and edited by Robert Hülsmann. Core of this module uses matlab-stl to write stl files written by Rick van Hattem.
 
 ![Example Lithophane](result.gif)
 
@@ -25,10 +25,10 @@ model.save("path/to/model.stl")
 ## Command Line Interface
 
 ```sh
-python -m lithophane the_best_siblings.jpeg --width 100
+python -m lithophane the_best_siblings.jpeg --width 100 --frame 3
 ```
 
-### Further arguments
+### Optional Arguments
 * `--width` or `-w` to set the width of the lithophane. Default is image width with a resolution of 10 pixels per millimeter. The height is calculated automatically.
 * `--depth` or `-d` to set the depth of the lithophane. Default is 3mm. More depth means more contrast but also longer print time and less translucency.
 * `--offset` or `-o` to set the offset of the lithophane. Default is 0.5mm. It's like the back of the lithophane. More offset means more stability but also less translucency. The thickness of the lithophane is the sum of `depth` and `offset`.

@@ -1,16 +1,4 @@
-"""
-This is the Lithophane Module written by Dirk Colbry and edited by Robert Hülsmann.
-
-Core of this module uses matlab-stl to write stl files written by Rick van Hattem.
-
-"""
-
-__author__ = "Dirk Colbry"
-__authors__ = ["Dirk Colbry", "Robert Hülsmann"]
-__version__ = "0.1.0"
-__license__ = "MIT"
-
-
+"""This module generates a 3D model of a lithophane from an given image."""
 import os
 
 import matplotlib.image
@@ -19,6 +7,16 @@ import numpy as np
 from matplotlib import cm
 from skimage.transform import resize
 from stl import mesh
+
+from lithophane.metadata import __author__  # noqa: F401
+from lithophane.metadata import __authors__  # noqa: F401
+from lithophane.metadata import __classifiers__  # noqa: F401
+from lithophane.metadata import __email__  # noqa: F401
+from lithophane.metadata import __keywords__  # noqa: F401
+from lithophane.metadata import __license__  # noqa: F401
+from lithophane.metadata import __maintainer__  # noqa: F401
+from lithophane.metadata import __url__  # noqa: F401
+from lithophane.metadata import __version__  # noqa: F401
 
 RESOLUTION = 0.1  # mm/pixel
 
