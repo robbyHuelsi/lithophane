@@ -83,6 +83,8 @@ def jpg_to_stl(
 
     """
 
+    if not os.path.isfile(img_path):
+        raise FileNotFoundError(f"File {img_path} not found.")
     img = matplotlib.image.imread(img_path)
 
     if not width_mm:
@@ -230,3 +232,5 @@ def show_stl(x: np.ndarray, y: np.ndarray, z: np.ndarray) -> None:
 
     # Plot the surface.
     ax.plot_surface(x, y, z, cmap=cm.coolwarm, linewidth=0, antialiased=False)
+    print("Showing plot... Close the plot window to continue.")
+    plt.show()

@@ -5,12 +5,12 @@ import sys
 import lithophane as li
 
 
-def main(command_line_arguments: list[str]) -> None:
+def main(command_line_arguments: list) -> None:
     """
     Command line interface for lithophane.
 
     Args:
-        command_line_arguments (list[str]): Command line arguments.
+        command_line_arguments (list): Command line arguments.
     """
 
     # Parse command line arguments
