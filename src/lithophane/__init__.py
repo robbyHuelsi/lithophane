@@ -18,7 +18,7 @@ from lithophane.metadata import __maintainer__  # noqa: F401
 from lithophane.metadata import __url__  # noqa: F401
 from lithophane.metadata import __version__  # noqa: F401
 
-RESOLUTION = 0.1  # mm/pixel
+RESOLUTION = 10  # pixel/mm
 
 
 def rgb_to_gray(rgb: np.ndarray) -> np.ndarray:
@@ -57,7 +57,7 @@ def scale_image(img: np.ndarray, width_mm: int = 40) -> np.ndarray:
     y_dim = img.shape[0]
     x_dim = img.shape[1]
 
-    scale = width_mm / RESOLUTION / x_dim
+    scale = width_mm * RESOLUTION / x_dim
     new_shape = (int(y_dim * scale), int(x_dim * scale), 3)
     img = resize(img, new_shape)
     return img
@@ -110,7 +110,7 @@ def jpg_to_stl(
 
     # Add a frame around the image
     if frame_mm > 0:
-        frame_pxl = int(frame_mm / RESOLUTION)
+        frame_pxl = int(frame_mm * RESOLUTION)
         framed_z = np.full(
             [z.shape[0] + 2 * frame_pxl, z.shape[1] + 2 * frame_pxl],
             depth_mm + offset_mm,
@@ -123,8 +123,8 @@ def jpg_to_stl(
     z_with_back[1:-1, 1:-1] = z
     z = z_with_back
 
-    x1 = np.linspace(1, z.shape[1] * RESOLUTION, z.shape[1])
-    y1 = np.linspace(1, z.shape[0] * RESOLUTION, z.shape[0])
+    x1 = np.linspace(1, z.shape[1] / RESOLUTION, z.shape[1])
+    y1 = np.linspace(1, z.shape[0] / RESOLUTION, z.shape[0])
 
     x, y = np.meshgrid(x1, y1)
 
