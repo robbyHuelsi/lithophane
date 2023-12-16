@@ -5,11 +5,9 @@ This module generates a 3D model of a lithophane from an given image. The output
 
 The code is originally written by Dirk Colbry ([original repository](https://github.com/colbrydi/Lithophane)) and edited by Robert Hülsmann. Core of this module uses matlab-stl to write stl files written by Rick van Hattem.
 
-<!--![Example Lithophane](https://raw.githubusercontent.com/robbyHuelsi/lithophane/main/result.gif)-->
-<video autoplay loop>
-    <source src="result.mov" type="video/quicktime">
-</video>
+![Example Lithophane](https://raw.githubusercontent.com/robbyHuelsi/lithophane/main/result.gif)
 
+[![Example Lithophane](https://raw.githubusercontent.com/robbyHuelsi/lithophane/main/result.tiff)](https://github.com/robbyHuelsi/lithophane/blob/main/result.gif)
 
 ## How to Install
 ```sh
