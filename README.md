@@ -7,8 +7,6 @@ The code is originally written by Dirk Colbry ([original repository](https://git
 
 ![Example Lithophane](https://raw.githubusercontent.com/robbyHuelsi/lithophane/main/result.gif)
 
-[![Example Lithophane](https://raw.githubusercontent.com/robbyHuelsi/lithophane/main/result.tiff)](https://github.com/robbyHuelsi/lithophane/blob/main/result.gif)
-
 ## How to Install
 ```sh
 pip install lithophane
@@ -44,6 +42,7 @@ lithophane the_best_siblings.jpeg --width 100 --frame 3
 
 ## After Model Generation
 ![Example Lithophane](https://raw.githubusercontent.com/robbyHuelsi/lithophane/main/slicer.png)
+
 After the model is generated, open the STL file in your favorite slicer software to generate the GCODE. **Use 100% infill!** Then, print it with a (slightliy) translucent filament and delight yourself and your beloved ones with a personalized memento.
 
 ## Background
