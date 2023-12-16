@@ -11,7 +11,9 @@ def import_from_path(path):
     return module
 
 
-metadata = import_from_path(Path(__file__).parent / "src" / "lithophane" / "metadata.py")
+metadata = import_from_path(
+    Path(__file__).parent / "src" / "lithophane" / "metadata.py"
+)
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
@@ -29,6 +31,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url=metadata.__url__,
+    download_url=f"{metadata.__url__}/archive/v_{metadata.__version__}.tar.gz",
     keywords=metadata.__keywords__,
     classifiers=metadata.__classifiers__,
     packages=setuptools.find_packages(where="src"),
