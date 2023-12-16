@@ -167,10 +167,9 @@ def generate_module(package_name: str, start_year: int = None, pin_mode: str = N
             "upload",
             "-r",
             "pypi",
-            "dist/{package_name}-{version}.*",
+            f"dist/{package_name}-{version}.*",
             "--verbose",
         ],
-        shell=True,
         check=True,
     )
 

@@ -31,7 +31,6 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url=metadata.__url__,
-    download_url=f"{metadata.__url__}/archive/v_{metadata.__version__}.tar.gz",
     keywords=metadata.__keywords__,
     classifiers=metadata.__classifiers__,
     packages=setuptools.find_packages(where="src"),
