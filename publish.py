@@ -89,13 +89,6 @@ def update_requirements(
     """
 
     print()
-    print("Prepare...")
-    for package in ["pipreqs", "build"]:
-        subprocess.run(
-            ["python3", "-m", "pip", "install", "--upgrade", package], check=True
-        )
-
-    print()
     print(f"Update {requirements_file_path}...")
     pipreqs_args = [
         "pipreqs",
@@ -118,6 +111,13 @@ def generate_module(package_name: str, start_year: int = None, pin_mode: str = N
         start_year (int): Start year of project. If None, copyright will not be updated.
         pin_mode (str, optional): if not None, it enables dynamic versioning. Defaults to None. Can be "compat", "gt", "no-pin".
     """
+
+    print()
+    print("Prepare...")
+    for package in ["pipreqs", "build", "twine"]:
+        subprocess.run(
+            ["python3", "-m", "pip", "install", "--upgrade", package], check=True
+        )
 
     package_path = Path(__file__).parent / "src" / package_name
 
@@ -157,11 +157,22 @@ def generate_module(package_name: str, start_year: int = None, pin_mode: str = N
     subprocess.run(f'git tag -a latest -m "Version {version}"', shell=True, check=True)
     subprocess.run("git push && git push --tags", shell=True, check=True)
 
-    # print()
-    # print("Upload...")
-    # subprocess.run(
-    #     f"python -m twine upload --repository github-{package_name} dist/{package_name}-{version}* --verbose"
-    # )
+    print()
+    print("Upload...")
+    subprocess.run(
+        [
+            "python3",
+            "-m",
+            "twine",
+            "upload",
+            "-r",
+            "pypi",
+            "dist/{package_name}-{version}.*",
+            "--verbose",
+        ],
+        shell=True,
+        check=True,
+    )
 
 
 if __name__ == "__main__":

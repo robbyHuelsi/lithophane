@@ -39,4 +39,5 @@ setuptools.setup(
     include_package_data=True,
     python_requires=metadata.__python_requires__,
     install_requires=required_packaged,
+    scripts=["bin/lithophane"],
 )

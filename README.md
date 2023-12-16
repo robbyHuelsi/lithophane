@@ -5,7 +5,7 @@ This module generates a 3D model of a lithophane from an given image. The output
 
 The code is originally written by Dirk Colbry ([original repository](https://github.com/colbrydi/Lithophane)) and edited by Robert Hülsmann. Core of this module uses matlab-stl to write stl files written by Rick van Hattem.
 
-![Example Lithophane](https://github.com/robbyHuelsi/lithophane/blob/main/result.gif?raw=true)
+![Example Lithophane](https://raw.githubusercontent.com/robbyHuelsi/lithophane/main/result.gif)
 
 ## How to Install
 ```sh
@@ -30,7 +30,7 @@ model.save("path/to/model.stl")
 ## Command Line Interface
 
 ```sh
-python -m lithophane the_best_siblings.jpeg --width 100 --frame 3
+lithophane the_best_siblings.jpeg --width 100 --frame 3
 ```
 
 ### Optional Arguments
@@ -41,7 +41,7 @@ python -m lithophane the_best_siblings.jpeg --width 100 --frame 3
 * `--show` to show the lithophane in a 3D plot.
 
 ## After Model Generation
-![Example Lithophane](https://github.com/robbyHuelsi/lithophane/blob/main/slicer.png?raw=true)
+![Example Lithophane](https://raw.githubusercontent.com/robbyHuelsi/lithophane/main/slicer.png)
 After the model is generated, open the STL file in your favorite slicer software to generate the GCODE. **Use 100% infill!** Then, print it with a (slightliy) translucent filament and delight yourself and your beloved ones with a personalized memento.
 
 ## Background

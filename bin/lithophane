@@ -1,0 +1,11 @@
+#!python3
+
+"""
+This script is used to generate lithophane images. It takes input parameters such as image file path and produces a lithophane image as output.
+"""
+
+import sys
+from lithophane.__main__ import main
+
+if __name__ == "__main__":
+    main(sys.argv[1:])

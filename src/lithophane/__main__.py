@@ -1,10 +1,18 @@
 """Command line interface for lithophane."""
 import argparse
 from pathlib import Path
-
+import sys
 import lithophane as li
 
-if __name__ == "__main__":
+
+def main(command_line_arguments: list[str]) -> None:
+    """
+    Command line interface for lithophane.
+
+    Args:
+        command_line_arguments (list[str]): Command line arguments.
+    """
+
     # Parse command line arguments
     parser = argparse.ArgumentParser(description="Create lithophane from image.")
     parser.add_argument("image_path", type=Path, help="Path to image file.")
@@ -42,7 +50,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--show", action="store_true", help="Show image and point cloud"
     )
-    args = parser.parse_args()
+    args = parser.parse_args(command_line_arguments)
 
     # Generate xyz point cloud
     print(f"Generating point cloud from {args.image_path}...")
@@ -67,3 +75,7 @@ if __name__ == "__main__":
     flat_stl_path = args.image_path.with_suffix(".stl")
     print(f"Saving stl to {flat_stl_path}...")
     model.save(flat_stl_path)
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
