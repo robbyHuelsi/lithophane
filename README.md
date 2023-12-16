@@ -1,18 +1,43 @@
 # Python Lithophane Generator
+This module generates a 3D model of a lithophane from an given image. The output file is a STL file. It can then be printed on a 3D printer.
 
-written by Dirk Colbry
+"A lithophane is a thin plaque of translucent material, [...] which has been moulded to varying thickness, such that when lit from behind the different thicknesses show as different shades, forming an image." - [Wikipedia](https://en.wikipedia.org/wiki/Lithophane)
 
-![Example Lithophane](https://camo.githubusercontent.com/d3f24684f4fb3510ca879bfca9517807a64bd1b8/68747470733a2f2f636f6c62727964692e6769746875622e696f2f696d616765732f696c5f353730784e2e3638383437363839395f6561706c2e6a7067)
+The code is originally written by Dirk Colbry ([original repository](https://github.com/colbrydi/Lithophane)) and edited by Robert Hülsmann.
 
-This is some code I developed to generate lithophanes from images.  There are two jupyter notebooks you can try out. Both should work in Google Colabratory as is.  The first one is a tutorial about Lithophans and the second one is just the example code if you want to build your own lithophane.
+![Example Lithophane](result.gif)
 
-* [Lithophane Tutorial](./Lithophane_Tutorial.ipynb)
-* [Lithophane Example](./Lithophane_Example.ipynb)
+## How to Use
+```python
+import lithophane as li
 
-You can click the open in colab link and the file should automatically open in your google colabratory account.  The following slides also describe how the code works:
+# 1. Generate xyz point cloud from image
+x, y, z = li.jpg_to_stl("path/to/image.jpeg")
 
-* [Slides](https://docs.google.com/presentation/d/1s_8gcGfFDEHnqS7U-TkC4xp9T49fblb2_EWRpsd-v_I/edit#slide=id.g7dc542caec_0_10)
+# 2. Generate stl model from point cloud
+model = li.make_mesh(x, y, z)
 
-I hope you find this useful.
+# 3. Save model as stl file
+model.save("path/to/model.stl")
+```
 
-- Dirk
+
+## Command Line Interface
+
+```sh
+python -m lithophane the_best_siblings.jpeg --width 100
+```
+
+### Further arguments
+* `--width` or `-w` to set the width of the lithophane. Default is image width with a resolution of 10 pixels per millimeter. The height is calculated automatically.
+* `--depth` or `-d` to set the depth of the lithophane. Default is 3mm. More depth means more contrast but also longer print time and less translucency.
+* `--offset` or `-o` to set the offset of the lithophane. Default is 0.5mm. It's like the back of the lithophane. More offset means more stability but also less translucency. The thickness of the lithophane is the sum of `depth` and `offset`.
+* `--frame` or `-f` to add a frame around the lithophane. Default is 0mm (no frame). The frame is added to the width and height of the lithophane.
+* `--show` to show the lithophane in a 3D plot.
+
+## After Model Generation
+![Example Lithophane](slicer.png)
+After the model is generated, open the STL file in your favorite slicer software to generate the GCODE. **Use 100% infill!** Then, print it with a (slightliy) translucent filament and delight yourself and your beloved ones with a personalized memento.
+
+## Background
+If you want to understand how the code works, please take a look into the [original repository](https://github.com/colbrydi/Lithophane) of Dirk Colbry. There are two jupyter notebooks you can try out.
